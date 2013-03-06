@@ -18,7 +18,7 @@ module Plutus
     #   GET /accounts.xml
     #   GET /accounts.json
     def index
-      @accounts = Account.all
+      @accounts = Account.includes(:credit_amounts, :debit_amounts).all
 
       respond_to do |format|
         format.html # index.html.erb
